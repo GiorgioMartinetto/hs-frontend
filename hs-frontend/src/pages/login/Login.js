@@ -23,24 +23,21 @@ const Login = () => {
     return(
         <>
             <div className='login-container peppereppe'>
-                <div className="container text-center">
-                    <div className="row">
-                        <div className="col">
-                            <img src={require('./images/logo_background.png')} alt='logo'/> 
-                        </div>
-                        <div className="col">
-                            <div className="mb-3">
-                                    <input className="form-control-sm" id="user-login" placeholder='Email'/>
-                                </div>
-                                <div className="mb-3">
-                                    <input type="password" className="form-control-sm" id="pass-login" placeholder='Password' />
-                                </div>
-                                <div className="mb-3 form-check">
-                                    <button  className="buttons" id='login-btn' onClick={sendLogin}>Login</button>
-                                    <button  className="buttons" id='register-btn'>Register</button>  
+                <div className="text-center">
+                    <form className="form-inline">
+                        <div>
+                            <img className="logo" src={require('./images/logo_background.png')} alt='logo'/> 
+                            <div className='buttons'>
+
+                            <input className="form-control-sm" id="user-login" placeholder='Email'/>
+                            <input type="password" className="form-control-sm" id="pass-login" placeholder='Password' />
+                            </div>
+                            <div className='buttons'>
+                                <button type="button" className="form-control-sm " id='login-btn' onClick={sendLogin}>Login</button>
+                                <button type="button" className="form-control-sm" id='register-btn'>Register</button>  
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div> 
         </>

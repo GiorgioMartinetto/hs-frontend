@@ -1,10 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300&display=swap');
 
+body{
+    background-color:#2b2f35 !important;
+}
+
 .login-container{
     font-family: 'Rajdhani', sans-serif;
-    background-color:#2b2f35;
-    text-align: center ;
     width: 100%;
+    background-color:#2b2f35 !important;
     height: 100vh;
 }
 
@@ -12,19 +15,30 @@
     position: relative;
 }
 
-.col > img {
-    width: 100%;
-    height: auto;
+.logo {
+    width: 40%;
+    min-width: 350px;
 }
-
+div {
+    display: inline-block;
+    width: fit-content;
+}
 .form-control-sm{
-   width: 300px;
+   width: 20%;
    border: none !important;
    border-radius: 0px !important; 
+   margin: 0.5em !important;
+   padding: 0.5em !important;
+   height: 3em !important;
+   min-width: 180px;
+   height: 48px !important;
 }
 
-.buttons{
-    border: none ;
-    color : #2b2f35;
-    background-color: #b98156;
+
+#login-btn, #register-btn{
+    border-radius: 0%;
+    height: 48px;
+    width: fit-content;
+    color: black;
+    background-color: orange;
 }
