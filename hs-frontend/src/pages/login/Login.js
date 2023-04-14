@@ -14,9 +14,11 @@ const Login = () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email:email, password:pass })
         };
+
         fetch('http://localhost:8080/api/v1/user/login', requestOptions)
             .then(response => response.json())
-            .then(data => this.setState({ postId: data.id }));
+            .then(response => console.log(response));
+           
       
     }
 
