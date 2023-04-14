@@ -1,23 +1,23 @@
 import './Login.css';
 import React from'react';
-import axios from 'axios';
+
 
 const Login = () => {
-
+    
 
     function sendLogin() {
         const email = document.getElementById('user-login').value;
         const pass = document.getElementById('pass-login').value;
-        axios.defaults.headers.post['Content-Type'] = 'application/json';
-        axios.defaults.headers.post['Access-Control-Allow-Origin'] = 'http://localhost:8080';
-        axios.post('http://localhost:8080/api/v1/user/login',
-            {
-                email: email,
-                password: pass
-            }
-        ).then(res => {
-            console.log(res.data);
-        })
+        
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email:email, password:pass })
+        };
+        fetch('http://localhost:8080/api/v1/user/login', requestOptions)
+            .then(response => response.json())
+            .then(data => this.setState({ postId: data.id }));
+      
     }
 
     return(
