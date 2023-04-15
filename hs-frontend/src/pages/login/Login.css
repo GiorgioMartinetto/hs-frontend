@@ -8,17 +8,33 @@
     height: 100vh;
 }
 
+
+
+.text-center{
+    position: relative;
+    top: 20%
+}
+
+form {
+    min-width: 99%;
+    width: fit-content;
+}
+
+#first-col{
+    border-right-color: darkorange;
+    border-right-width: 1px;
+    border-right-style: solid;
+}
+
 .logo {
     width: 80%;
     min-width: 350px;
 }
 
-form {
-    min-width: 100%;
-    width: fit-content;
+.field-container{
+    position: relative;
+    top: 20%;
 }
-
-
 
 .form-control-sm{
    width: 50%;
