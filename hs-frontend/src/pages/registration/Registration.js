@@ -1,9 +1,10 @@
 import './Registration.css';
 import React from'react';
+import { useNavigate } from 'react-router-dom';
 
 
 const Registration = () => {
-    
+    const navigate = useNavigate();
 
     function sendRegistration() {
         const email = document.getElementById('email').value;
@@ -47,7 +48,7 @@ const Registration = () => {
                                         <button type="button" id='register-btn' onClick={sendRegistration}>
                                             Register
                                         </button>  
-                                        <button type="button" id='login-btn' >
+                                        <button type="button" id='login-btn' onClick={() => navigate('/login')}>
                                             Login
                                         </button>
                                     </div>
