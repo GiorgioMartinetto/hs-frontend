@@ -26,6 +26,12 @@ form {
     border-right-style: solid;
 }
 
+@media screen and (max-widh:578){
+    #first-col{
+        border-right:none !important;
+    }
+}
+
 .logo {
     width: 80%;
     min-width: 350px;
