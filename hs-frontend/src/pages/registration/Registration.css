@@ -19,18 +19,20 @@ form {
     min-width: 99%;
     width: fit-content;
 }
-.col {
-    height: fit-content;
+
+.row {
+    padding: 10px;
+    min-width: none;
 }
 
-#first-col {
+#col1 {
     border-bottom: none;
     margin: 10px;
     width: 50%;
     min-width: 319px;
 }
 
-#second-col {
+#col2 {
     margin:10px;
     border-left-color: darkorange;
     border-left-width: 1px;
@@ -40,25 +42,23 @@ form {
 }
 
 @media screen and (max-width: 674px){
-    #second-col {
+    #col2{
         width: 90%;
         min-width: none;
         border-left:none !important;
     }
-
-    #first-col {
+}
+@media screen and (max-width: 673px){
+    #col1 {
         width: 90%;
         min-width: none;
-        border-bottom-color: darkorange !important;
-        border-bottom-width: 1px !important;
-        border-bottom-style: solid !important;
-
+        border-bottom-color: darkorange;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
     }
-
-   
 }
 
-.logo {
+.logo1 {
     width: 80%;
     /* min-width: 350px; */
 }
@@ -68,15 +68,18 @@ form {
     top: 20%;
 }
 
+.col {
+    height: fit-content;
+}
 .form-control-sm{
-    width: 90%;
-    font-size: 1.5em !important;
-    border: none !important;
-    border-radius: 0px !important; 
-    margin: 0.5em !important;
-    padding: 0.5em !important;
-    min-width: 180px;
-    height: 48px !important;
+   width: 90%;
+   font-size: 1.5em !important;
+   border: none !important;
+   border-radius: 0px !important; 
+   margin: 0.5em !important;
+   padding: 0.5em !important;
+   min-width: 180px;
+   height: 48px !important;
 }
 
 
