@@ -1,26 +1,31 @@
 import './Login.css';
 import React from'react';
+import api from '../../config/axiosConfig'
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const Login = () => {
     
     const navigate = useNavigate();
+    const [mex, setMessage] = useState();
 
     function sendLogin() {
+
         const email = document.getElementById('user-login').value;
         const pass = document.getElementById('pass-login').value;
-        
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email:email, password:pass })
-        };
-
-        fetch('http://localhost:8080/api/v1/user/login', requestOptions)
-            .then(response => response.json())
-            .then(response => console.log(response));
+        try{
+            api.post('user/login', { email:email, password:pass })
+            .then(response => {
+                console.log(response)
+                console.log(response.data)
+                setMessage(response.data);
+            })
+        }catch(err){
+            console.log(err);
+        }
         
     }
+
 
     return(
         <>
