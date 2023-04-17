@@ -1,14 +1,13 @@
 import './Login.css';
 import React from'react';
-import session from '../../config/userSession';
 import api from '../../config/axiosConfig'
+import UserSession from '../../config/UserSession';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 const Login = () => {
     
     const navigate = useNavigate();
-    const [response,setResponse] = useState();
     const [mex,setMex] = useState();
 
     function sendLogin() {
@@ -22,18 +21,18 @@ const Login = () => {
             try{
                 api.post('user/login', { email:email, password:pass })
                 .then(response => {
-                    console.log(response)
                     console.log(response.data)
-                    setResponse(response.data);
-                })
+                    if(response.data){
+                        sessionStorage.setItem('userName', response.data.userName);
+                        navigate('/home');
+
+                    } else {
+                        console.log('qui quo qua')
+                    }
+                    console.log(UserSession.getUserName());
+                });
             }catch(err){
                 console.log(err);
-            }
-            if(response){
-                session.set('user',response.data);
-                navigate('/home');
-            } else {
-                setMex('Invalid email or password');
             }
         }
     }

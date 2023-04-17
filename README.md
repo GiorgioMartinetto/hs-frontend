@@ -11,3 +11,10 @@ To properly install this project run the following commands:
 ## Start
 To start the front end use the command:
 - **npm start**
+
+- **modules**
+
+npm install bootstrap
+npm install react-bootstrap
+npm install react-router
+npm install react-router-dom

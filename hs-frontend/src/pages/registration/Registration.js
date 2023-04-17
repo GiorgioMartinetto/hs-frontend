@@ -7,36 +7,51 @@ import { useNavigate } from 'react-router-dom';
 
 const Registration = () => {
     const navigate = useNavigate();
-    const [response,setResponse] = useState();
+    const [mexErr,setErrMex] = useState();
     const [mex,setMex] = useState();
-    
     function sendRegistration() {
         const email = document.getElementById('email').value;
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
         const confirmPassword = document.getElementById('confirmPassword').value;
         
-        if (password === confirmPassword) {
-            setMex('');
-            try{
-                api.post('user/sign-in', { email: email, userName: username, password: password })
-                .then(response => {
-                    console.log(response);
-                    console.log(response.data);
-                    setResponse(response.data);
-                })
-
-            }catch(error){
-                console.log(error);
-            }
-            if(response)
-            {
-                navigate('/login');
-            }
-            
-        } else {
-            setMex('Passwords do not match');
-        }           
+        if (email === '' || username === '' || password === '' || confirmPassword === '') {
+            setErrMex('Some fields are missing');
+        } 
+        else if(!(/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email))){
+            setErrMex('Email is not valid');
+        }
+        else if(!(/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(password)) 
+        && password.length < 8 && password.length > 255){
+            setErrMex('Password is not valid');
+        }
+        else {
+            if (password === confirmPassword) {
+                setErrMex('');
+                try{
+                    api.post('user/sign-in', { email: email, userName: username, password: password })
+                    .then(response => {
+                        console.log(response);
+                        console.log(response.data);
+                        if(response)
+                        {   
+                            setMex('Registration successful');
+                            setTimeout(() => {
+                                navigate('/login') }, 1500)
+                        }
+                    })
+    
+                }catch(error){
+                    console.log(error);
+                }
+                
+                
+                
+            } else {
+                setErrMex('Passwords do not match');
+            } 
+        }
+                  
       
     }
 
@@ -65,6 +80,7 @@ const Registration = () => {
                                     </div>
                                     
                                     <div>
+                                        <p id='err-mex'>{mexErr}</p>
                                         <p id='mex'>{mex}</p>  
                                     </div>
                                     

@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300&display=swap');
+
+.navbar{
+    font-family: 'Rajdhani', sans-serif !important;
+
+}
+
+.me-auto.navbar-nav a{
+    font-size: 1.5em !important;  
+}
+
+.me-auto.navbar-nav a:hover {
+    color: #8d552d !important; 
+    font-size: 1.6em !important;  
+}
+
+.nav-link {
+    color:white !important;
+    font-weight: bolder !important;
+}
+
+.container{
+    padding-right: 0% !important;
+    padding-left: 0% !important;
+    margin-right: 0% !important;
+    margin-left: 0% !important;
+}
+
+.navbar-brand{
+    width: 30% !important;
+    text-align: center;
+ }
+
+ .me-auto > a {
+    margin-left: 80px;
+  }
+
+ .dropdown{
+    margin-left: 80px;
+ }
+
+.dropdown-menu{
+    background-color: #2b2f35 !important;
+    --bs-dropdown-link-hover-bg: #2b2f35 !important;
+    --bs-dropdown-link-active-color: #2b2f35 !important;
+}
+
+.dropdown-menu > a{
+    color:whitesmoke !important;
+
+}
+
+
+ #logo-home{
+    width: 80%;
+    height: auto;
+} 
+
+@media screen and (max-width:  674px){
+    #logo-home{
+        width: 100%;
+        height: auto;
+    }
+}
