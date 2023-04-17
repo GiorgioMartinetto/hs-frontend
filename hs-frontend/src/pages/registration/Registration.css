@@ -28,8 +28,9 @@ form {
 #col1 {
     border-bottom: none;
     margin: 10px;
-    width: 50%;
+    width: 49%;
     min-width: 319px;
+    height: auto;
 }
 
 #col2 {
@@ -37,8 +38,9 @@ form {
     border-left-color: darkorange;
     border-left-width: 1px;
     border-left-style: solid;
-    width: 50%;
+    width: 49%;
     min-width: 319px;
+    height: auto;
 }
 
 @media screen and (max-width: 674px){
@@ -63,9 +65,9 @@ form {
     /* min-width: 350px; */
 }
 
-.field-container{
+.register-field-container{
     position: relative;
-    top: 20%;
+    top: 0%; /*For some reason this elemet took the css file of Login.css*/
 }
 
 .col {
@@ -93,5 +95,14 @@ form {
     margin: 0.5em !important;
     padding: 0.5em !important;
     background-color: darkorange;
+}
+
+.buttons-container > button:hover{
+    background-color: #e87f00
+}
+
+#mex{
+    color: red;
+    font-size: 1.5em;
 }
 

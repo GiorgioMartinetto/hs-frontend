@@ -25,8 +25,6 @@ const Home = () => {
                     page for non logged-in users
         */
         <div className="home">
-            <h1>Home</h1>
-            <p>This is the home page</p>
             <nav className='navbar navbar-expand-sm bg-dark btn-group' id='menu'>
                 <button id='home-btn' className='btn btn-dark' onClick={() => navigate('/home')}>Home</button>
                 {/* TODO: create film page */}

@@ -1,26 +1,42 @@
 import './Registration.css';
 import React from'react';
+import api from '../../config/axiosConfig'
+import { useState } from'react';
 import { useNavigate } from 'react-router-dom';
 
 
 const Registration = () => {
     const navigate = useNavigate();
-
+    const [response,setResponse] = useState();
+    const [mex,setMex] = useState();
+    
     function sendRegistration() {
         const email = document.getElementById('email').value;
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
         
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email:email, userName:username, password:password })
-        };
+        if (password === confirmPassword) {
+            setMex('');
+            try{
+                api.post('user/sign-in', { email: email, userName: username, password: password })
+                .then(response => {
+                    console.log(response);
+                    console.log(response.data);
+                    setResponse(response.data);
+                })
 
-        fetch('http://localhost:8080/api/v1/user/sign-up', requestOptions)
-            .then(response => response.json())
-            .then(response => console.log(response));
-           
+            }catch(error){
+                console.log(error);
+            }
+            if(response)
+            {
+                navigate('/login');
+            }
+            
+        } else {
+            setMex('Passwords do not match');
+        }           
       
     }
 
@@ -34,7 +50,7 @@ const Registration = () => {
                                 <img className='logo1' src={require('../images/logo_background.png')} alt='logo'/> 
                             </div>
                             <div className='col' id='col2'>
-                                <div className=' field-container'>
+                                <div className='register-field-container'>
                                     <div>
                                         <input className="form-control-sm" id="email" placeholder='Email'/>
                                     </div>
@@ -44,13 +60,21 @@ const Registration = () => {
                                     <div>
                                         <input type="password" className="form-control-sm" id="password" placeholder='Password' />
                                     </div>
+                                    <div>
+                                        <input type="password" className="form-control-sm" id="confirmPassword" placeholder='Reapet Password' />
+                                    </div>
+                                    
+                                    <div>
+                                        <p id='mex'>{mex}</p>  
+                                    </div>
+                                    
                                     <div className='buttons-container'>    
                                         <button type="button" id='register-btn' onClick={sendRegistration}>
-                                            Register
-                                        </button>  
-                                        <button type="button" id='login-btn' onClick={() => navigate('/login')}>
-                                            Login
+                                            Submit
                                         </button>
+                                        <button type="button" id='register-btn' onClick={() => navigate('/login')}>
+                                            Back
+                                        </button>   
                                     </div>
                                 </div>
                             </div>
