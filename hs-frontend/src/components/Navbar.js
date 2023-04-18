@@ -19,37 +19,9 @@ const MyNavbar = () => {
     // }
     return (
         
-            // <nav className='navbar navbar-expand-sm bg-dark btn-group' id='menu'>
-         
-
-               
-            //     <button id='film-btn' className='btn btn-dark' onClick={() => navigate('/film')}>Film</button>
-          
-            //     <button id='tv-series-btn' className='btn btn-dark' onClick={() => navigate('/tv-series')}>TV Series</button>
-            
-            //     <button id='genres-btn' className='btn btn-dark' onClick={() => navigate('/genres')}>Genres</button>
-                
-            //     {/* <button id='search-btn' className='btn btn-dark' onClick={search}>Search</button>
-            //     <input id='search' placeholder='Titles or Genres' hidden/>
-            //     <input className='btn btn-dark' type='submit' value={'go'} hidden/>" */}
-
-            //     <div className="dropdown">
-            //     <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-            //         {sessionStorage.getItem('userName')}
-            //     </button>
-            //     <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            //         <li className='dropdown-item '> Logout </li>
-            //     </ul>
-            //     </div>
-              
-            //     <button id='profiles-btn' className='btn btn-dark' onClick={() => navigate('/profiles')}>Change Profile</button>
-            // </nav>
-
-
             <Navbar bg="dark" expand="sm">
 
-
-            <Container>
+            <Container id='navbar-container'>
               <Navbar.Brand onClick={() => navigate('/home')}>
                 <img id='logo-home' src = {require('./logo_background.png')} className="d-inline-block align-top" alt='Logo Home'/>
               </Navbar.Brand>
@@ -61,7 +33,7 @@ const MyNavbar = () => {
                   <Nav.Link onClick={() => navigate('/series')}>Series</Nav.Link>
                   <Nav.Link href="#link">Films</Nav.Link>
                   <NavDropdown title={sessionStorage.getItem('userName')} id="basic-nav-dropdown">
-                    <NavDropdown.Item>Account Settings</NavDropdown.Item>   
+                    <NavDropdown.Item onClick={() => navigate('/account')}>Account Settings</NavDropdown.Item>   
                     <NavDropdown.Divider />
                     <NavDropdown.Item onClick={logout}> Logout </NavDropdown.Item>
                   </NavDropdown>

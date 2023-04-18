@@ -1,7 +1,6 @@
 import './Login.css';
 import React from'react';
 import api from '../../config/axiosConfig'
-import UserSession from '../../config/UserSession';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -24,12 +23,13 @@ const Login = () => {
                     console.log(response.data)
                     if(response.data){
                         sessionStorage.setItem('userName', response.data.userName);
+                        sessionStorage.setItem('email', response.data.email);
                         navigate('/home');
 
                     } else {
                         console.log('qui quo qua')
                     }
-                    console.log(UserSession.getUserName());
+                    
                 });
             }catch(err){
                 console.log(err);
@@ -55,8 +55,13 @@ const Login = () => {
                                     <div>
                                         <input type="password" className="form-control-sm" id="pass-login" placeholder='Password' />
                                     </div>
+                                    
                                     <div>
-                                        <p id='mex'> {mex} </p>   
+                                        <a href='/reset' > Forgot password?  </a>
+                                    </div>
+
+                                    <div>
+                                        <p id='err-mex'> {mex} </p>   
                                     </div>
                                     <div className='buttons-container'>    
                                         <button type="button" id='login-btn' onClick={sendLogin}>
