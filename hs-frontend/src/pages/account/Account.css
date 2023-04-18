@@ -24,7 +24,36 @@
     margin-left: 20px;
 }
 
+.change-field-container>button{
+    margin-left: 20px;
+    color: black;
+    border: none !important;;
+    margin: 0.5em !important;
+    background-color: darkorange;
+}
 
+
+.accordion{
+    --bs-accordion-bg:none !important;
+    --bs-accordion-border-color: none !important;
+    --bs-accordion-border-width: none !important;
+    --bs-accordion-border-radius: none !important;
+    --bs-accordion-inner-border-radius: none !important;
+    --bs-accordion-btn-focus-border-color:none !important;
+    --bs-accordion-active-color:#8d552d !important;
+    --bs-accordion-active-bg:none !important;
+}
+
+.accordion-item{
+    color: white !important;
+    font-size:1.5em;
+}
+
+.accordion-header>button {
+    font-size: 1.7rem;
+    font-weight: 900;
+    color: white;
+}
 
 
 

@@ -193,7 +193,7 @@ const Account = () => {
 
             <Container id='account-container'>
                 <h1>Hi, {sessionStorage.getItem('userName')}!</h1>
-                <Accordion defaultActiveKey='0'>
+                <Accordion bg='hide' defaultActiveKey='0'>
                     <Accordion.Item eventKey="0">
                         <Accordion.Header>Profiles</Accordion.Header>
                             <Accordion.Body>
@@ -202,18 +202,22 @@ const Account = () => {
                     </Accordion.Item>
 
                     <Accordion.Item eventKey="1">
-                        <Accordion.Header>Account Menagment</Accordion.Header>
+                        <Accordion.Header>Account Managment</Accordion.Header>
                             <Accordion.Body>
                                 <div>
-                                    <div>
-                                        <p> Email: {sessionStorage.getItem('email')}</p>
+                                    <div className='change-field-container'>
+
+                                        Email: {sessionStorage.getItem('email')}
+                                        
                                         <button type="button" onClick={handleShowEmail}>Change Email</button>
                                     </div>
-                                    <div>
-                                        <p> UserName: {sessionStorage.getItem('userName')}</p>
+                                    <div className='change-field-container'>
+                                        UserName: {sessionStorage.getItem('userName')}
                                         <button type="button" onClick={handleShowUserName}>Change UserName</button>
                                     </div>
-                                    <button type="button" onClick={handleShowPass}>Change Password</button>
+                                    <div className='change-field-container'>
+                                        <button type="button" onClick={handleShowPass}>Change Password</button>
+                                    </div>
                                 </div>
                             </Accordion.Body>
                     </Accordion.Item>
