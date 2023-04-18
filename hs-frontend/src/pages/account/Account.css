@@ -7,6 +7,11 @@
     margin-top: 3%;
 }
 
+#account-container h1{
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 900;
+}
+
 .card-container{
     width: 49%;
     height: auto;
@@ -19,6 +24,17 @@
     height: 210px;
 }
 
+.row{
+    margin-top: 15px !important;
+}
+
+.row>*{
+    padding-left: 22px !important;
+}
+
+.row h3{
+    font-weight: 900;
+}
 
 #prime-img{
     margin-left: 20px;
@@ -42,6 +58,13 @@
     --bs-accordion-btn-focus-border-color:none !important;
     --bs-accordion-active-color:#8d552d !important;
     --bs-accordion-active-bg:none !important;
+}
+
+.accordion-button{
+    z-index: none !important;
+    border-color: none !important; 
+    outline: none !important; 
+    box-shadow: none !important;; 
 }
 
 .accordion-item{

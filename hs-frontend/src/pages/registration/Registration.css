@@ -43,6 +43,10 @@ form {
     height: auto;
 }
 
+#forgot-password{
+    font-size: 1.4em;
+}
+
 @media screen and (max-width: 674px){
     #col2{
         width: 90%;

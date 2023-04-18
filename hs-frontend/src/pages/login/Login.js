@@ -57,7 +57,7 @@ const Login = () => {
                                     </div>
                                     
                                     <div>
-                                        <a href='/reset' > Forgot password?  </a>
+                                        <a id='forgot-password' href='/reset' > Forgot password?  </a>
                                     </div>
 
                                     <div>
