@@ -78,7 +78,9 @@
     color: white;
 }
 
-
+.btn-outline-secondary {
+    margin-left: 22%;
+}
 
 @media  screen and (max-width: 674px){
     .card-container img{
