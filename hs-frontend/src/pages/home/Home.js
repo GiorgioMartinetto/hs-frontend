@@ -19,7 +19,7 @@ const Home = () => {
                 <MyNavbar /> 
                 <div id='content-container'>
                     {/* TODO: implement content fetch from server and loading */}
-                       
+
                 </div>
             </div>
         </>

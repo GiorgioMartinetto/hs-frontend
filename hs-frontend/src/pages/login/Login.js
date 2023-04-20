@@ -9,6 +9,9 @@ const Login = () => {
     const navigate = useNavigate();
     const [mex,setMex] = useState();
 
+
+    
+
     function sendLogin() {
 
         const email = document.getElementById('user-login').value;
@@ -27,15 +30,55 @@ const Login = () => {
                         navigate('/home');
 
                     } else {
-                        console.log('qui quo qua')
+                        console.log('Something went wrong')
                     }
                     
+                })
+                .then(  res => {
+                    try{
+                        api.post('profile/list', {owner: sessionStorage.getItem('email')})
+                        .then(response => {
+                        
+                            if(response.data){ 
+                                let i = 0;
+                                while(response.data[i]!== undefined){
+                                    sessionStorage.setItem('profile'+i, response.data[i]);
+                                    i++;
+                                }
+                            } else {
+                                console.log('Something went wrong');
+                            }
+                            
+                        });
+                    } catch(err){
+                        console.log(err);
+                    }
+                })
+                .then(  res => {
+                    try{
+                        api.post('subscription/listSubscriptions', {owner: sessionStorage.getItem('email')})
+                        .then(response => {
+                            console.log(response.data)
+                            if(response.data){
+                                const pl = response.data;
+                                const jsonArray = JSON.stringify(pl);
+                                sessionStorage.setItem('subscriptions', jsonArray);
+                                
+                            } else {
+                                console.log('Something went wrong');
+                            }
+                            
+                        });
+                    } catch(err){
+                        console.log(err);
+                    }
                 });
             }catch(err){
                 console.log(err);
             }
         }
     }
+
 
 
     return(
