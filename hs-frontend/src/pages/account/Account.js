@@ -3,7 +3,6 @@ import api from '../../config/axiosConfig';
 import React, { useEffect, useState } from 'react';
 
 
-import MyCard from '../../components/MyCard';
 /* bootstrap components*/
 import Accordion from'react-bootstrap/Accordion';
 import Container from 'react-bootstrap/Container';
@@ -15,6 +14,7 @@ import Modal from 'react-bootstrap/Modal';
 
 /* custom components */
 import MyNavbar from '../../components/Navbar';
+import MyCard from '../../components/MyCard';
 
 const Account = () => {
     const [errMex, setErrMex] = useState();
@@ -38,13 +38,6 @@ const Account = () => {
 
         while(sessionStorage.getItem('profile'+i)!==null){
             profileList[i] = {id:i, name:sessionStorage.getItem('profile'+i)};
-            i++;
-        }
-
-        i = 0;
-
-        while(sessionStorage.getItem('profile'+i)!==null){
-            console.log(profileList[i]);
             i++;
         }
     });

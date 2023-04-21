@@ -60,10 +60,8 @@ const Login = () => {
                         .then(response => {
                             console.log(response.data)
                             if(response.data){
-                                const pl = response.data;
-                                const jsonArray = JSON.stringify(pl);
-                                sessionStorage.setItem('subscriptions', jsonArray);
-                                
+                                sessionStorage.setItem('netflix', response.data.netflix);
+                                sessionStorage.setItem('prime', response.data.prime);
                             } else {
                                 console.log('Something went wrong');
                             }

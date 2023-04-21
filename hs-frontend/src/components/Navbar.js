@@ -11,6 +11,7 @@ const MyNavbar = () => {
         
     function logout() {
         sessionStorage.clear();
+        console.log('console logout called');
         navigate('/login');
     }
 
@@ -35,7 +36,7 @@ const MyNavbar = () => {
                   <NavDropdown title={sessionStorage.getItem('userName')} id="basic-nav-dropdown">
                     <NavDropdown.Item onClick={() => navigate('/account')}>Account Settings</NavDropdown.Item>   
                     <NavDropdown.Divider />
-                    <NavDropdown.Item onClick={logout}> Logout </NavDropdown.Item>
+                    <NavDropdown.Item onClick={() => logout()}> Logout </NavDropdown.Item>
                   </NavDropdown>
                 </Nav>
               </Navbar.Collapse>
