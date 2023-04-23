@@ -30,27 +30,27 @@ const MyCard = () => {
                     {owner:sessionStorage.getItem('email'), profileName:sessionStorage.getItem('profile'+id)})
                     .then(res => {
                         if (res.data) {
-                            sessionStorage.setItem('profile'+id, null);
-                            console.log(sessionStorage.getItem('profile'+id));
+                            sessionStorage.setItem('profile' + id, null);
                             switch (id) {
                                 case 0:
-                                    cardRef0.current.style.display='hidden';
+                                    cardRef0.current.style.display='none';
                                     break;
                                 case 1:
-                                    cardRef1.current.style.display='hidden';
-                                    break;
-                            
+                                    cardRef1.current.style.display='none';
+                                    break;     
                                 case 2:
-                                    cardRef2.current.style.display='hidden';
+                                    cardRef2.current.style.display='none';
                                     break;
                                 case 3:
-                                    cardRef3.current.style.display='hidden';
+                                    cardRef3.current.style.display='none';
                                     break;                    
                                 default:
                                     break;
                             }
-                            createRoot(document.getElementById('profile-card-'+id));
+                            console.log("Removed profile " + id + " successfully");
+                            
                         } else {
+                            setErrMex('Failed to remove profile');
                             console.log(res.data);
                         }
                     });    
@@ -64,8 +64,9 @@ const MyCard = () => {
     }
 
     function createProfile() {
-        const newProfile = document.getElementById('').value;
-        console.log('create profile called')
+        const newProfile = document.getElementById('create-newprofile').value;
+        console.log('create profile called');
+        let id = 0;
         try {
             api.post(
                 '/profile/creation',
@@ -73,31 +74,48 @@ const MyCard = () => {
                     owner: sessionStorage.getItem('email'),
                     profileName: newProfile  
                 }
-            )
-            .then( response => {
-                let id = 1; //trovare modo di definirlo dinamicamente
-                switch (id) {
-                    case 0:
-                        cardRef0.current.style.display='inline-block';
-                        break;
-                    case 1:
-                        cardRef1.current.style.display='inline-block';
-                        break;
-                
-                    case 2:
-                        cardRef2.current.style.display='inline-block';
-                        break;
-                    case 3:
-                        cardRef3.current.style.display='inline-block';
-                        break;                    
-                    default:
-                        break;
+            ).then ( 
+                response => {
+                    if (response.data) {
+                        for (let i = 3; i >= 0; i--) {
+                            if(sessionStorage.getItem('profile' + i) == null) {
+                                id = i;
+                            }
+                        }
+                        
+                        sessionStorage.setItem('profile'+ id, newProfile);
+                        setMex('Profile ' + newProfile + " created successfully");
+                        setTimeout(() => {
+                            handleCloseCreateProfile()
+                            switch (id) {
+                                case 0:
+                                    cardRef0.current.style.display='inline-block';
+                                    break;
+                                case 1:
+                                    cardRef1.current.style.display='inline-block';
+                                    break;
+                                        
+                                case 2:
+                                    cardRef2.current.style.display='inline-block';
+                                    break;
+                                case 3:
+                                    cardRef3.current.style.display='inline-block';
+                                    break;                    
+                                default:
+                                    break;
+                            }
+                            createRoot(document.getElementById('profile-card-' + id)); 
+                        }, 1200);
+                        console.log("profile " + id + " created with name " + newProfile);                                   
+                    } else {
+                        setErrMex('Failed to create profile');
+                        console.log(response.data);
+                    }
                 }
-                createRoot(document.getElementById('profile-card-'+id));
-            });
+            );
         } catch (err) {
             console.log(err);
-        }
+        }                        
     }
 
     return(
@@ -108,7 +126,7 @@ const MyCard = () => {
                 <Modal.Title>Create Profile</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <input id='account-change-newusername'placeholder='Profile Name' />
+                    <input id='create-newprofile' placeholder='Profile Name' />
                     <p> {mex} </p>
                     <p> {errMex} </p>
                 </Modal.Body>
