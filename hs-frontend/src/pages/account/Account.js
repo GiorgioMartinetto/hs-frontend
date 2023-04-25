@@ -1,6 +1,6 @@
 import './Account.css'
 import api from '../../config/axiosConfig';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 
 
 /* bootstrap components*/
@@ -20,6 +20,9 @@ const Account = () => {
     const [errMex, setErrMex] = useState();
     const [mex, setMex] = useState();
 
+    const netflixBtn = useRef(null);
+    const primeBtn = useRef(null);
+
     const [showEmail, setShowEmail] = useState(false);
     const handleCloseEmail = () => {setShowEmail(false); setErrMex(''); setMex('');}
     const handleShowEmail = () => setShowEmail(true);
@@ -33,9 +36,16 @@ const Account = () => {
     const handleShowPass = () => setShowPass(true);
     let profileList =[];
 
+    const [showSubNetflix, setShowSubNetflix] = useState(false);
+    const handleCloseSubscriptionNetflix = () => {setShowSubNetflix(false); setErrMex(''); setMex('');}
+    const handleShowSubscriptionNetflix = () => setShowSubNetflix(true);
+
+    const [showSubPrime, setShowSubPrime] = useState(false);
+    const handleCloseSubscriptionPrime = () => {setShowSubPrime(false); setErrMex(''); setMex('');}
+    const handleShowSubscriptionPrime = () => setShowSubPrime(true);
+
     useEffect(() => {
         let i = 0;
-
         while(sessionStorage.getItem('profile'+i)!==null){
             profileList[i] = {id:i, name:sessionStorage.getItem('profile'+i)};
             i++;
@@ -133,6 +143,45 @@ const Account = () => {
         }
     }
 
+
+    function addSubscription(provider){
+        
+        const email = document.getElementById('provider-email').value;
+        const pass = document.getElementById('provider-password').value;
+
+        try{
+            api.post('/subscription/addSubscription', 
+                {emailPlatform:sessionStorage.getItem('email'), provider:provider, providerEmail:email, password:pass})
+                .then(
+                    response => {
+                        if(response.data){
+                            setErrMex('');
+                            setMex('Subscription Added');
+                            if(provider === 'netflix'){
+                                sessionStorage.setItem('netflix',true);
+                                netflixBtn.current.style.mixBlendMode='overlay';
+                                
+                                setTimeout(() => {
+                                    handleCloseSubscriptionNetflix()
+                                }, 1200);
+                            }
+                            if(provider === 'prime'){
+                                sessionStorage.setItem('prime',true);
+                                primeBtn.current.style.mixBlendMode='overlay';
+                                setTimeout(() => {
+                                    handleCloseSubscriptionPrime()
+                                    window.location.reload();
+                                }, 1200);
+                            }
+                            
+                        } else{
+                            setErrMex('Failed to add '+provider+' subscription');
+                        }
+                });
+        }catch(err){
+            console.log(err);
+        }
+    }
     return (
         <>
             <MyNavbar />
@@ -206,6 +255,50 @@ const Account = () => {
                 </Modal.Footer>
             </Modal>
 
+            {/* MODAL ADDSUBSCRIPTION NETFLIX*/}
+            <Modal show={showSubNetflix} onHide={handleCloseSubscriptionNetflix}>
+                <Modal.Header closeButton>
+                <Modal.Title>Netflix Subscription</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <input id='provider-email' placeholder='Netflix Email' />
+                    <input type='password' id='provider-password'placeholder='Password' />
+                    <p> {mex} </p>
+                    <p> {errMex} </p>
+
+                </Modal.Body>
+                <Modal.Footer>
+                <Button variant="outline-secondary" onClick={handleCloseSubscriptionNetflix}>
+                    Close
+                </Button>
+                <Button variant="outline-primary" onClick={()=>addSubscription('netflix')}>
+                    Submit
+                </Button>
+                </Modal.Footer>
+            </Modal>
+
+
+            {/* MODAL ADDSUBSCRIPTION PRIME*/}
+            <Modal show={showSubPrime} onHide={handleCloseSubscriptionPrime}>
+                <Modal.Header closeButton>
+                <Modal.Title>Prime Subscription</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <input id='provider-email' placeholder='Prime Email' />
+                    <input type='password' id='provider-password'placeholder='Password' />
+                    <p> {mex} </p>
+                    <p> {errMex} </p>
+
+                </Modal.Body>
+                <Modal.Footer>
+                <Button variant="outline-secondary" onClick={handleCloseSubscriptionPrime}>
+                    Close
+                </Button>
+                <Button variant="outline-primary" onClick={()=>addSubscription('prime')}>
+                    Submit
+                </Button>
+                </Modal.Footer>
+            </Modal>
 
             <Container id='account-container'>
                 <h1>Hi, {sessionStorage.getItem('userName')}!</h1>
@@ -244,15 +337,26 @@ const Account = () => {
                     <h3>Subscription</h3>
                     <hr></hr>
                     <Col className='card-container'>
-                            <img src={require('./images/netflix.png')} alt='netflix' id='netflix-img'/>
-                            
-                            <img src={require('./images/primevideo.png')} alt='prime video' id='prime-img'/>  
+                        <button type="button" id='netflix-sub-btn' onClick={handleShowSubscriptionNetflix} 
+                            disabled={sessionStorage.getItem('netflix') === 'false' ? false:true} >
+                            <img ref={netflixBtn} alt='netflix btn' id='netflix-img' src={require('./images/netflix.png')} style={{
+                                mixBlendMode : sessionStorage.getItem('netflix') === 'false' ? 'overlay': 'none'
+                            }}/>
+                        </button>  
+
+                        <button ref={primeBtn} type="button" id='prime-sub-btn' onClick={handleShowSubscriptionPrime}
+                            disabled={sessionStorage.getItem('prime') === 'false' ? false:true} >  
+                            <img src={require('./images/primevideo.png')} id='prime-img' alt='prime video' style={{
+                                mixBlendMode : sessionStorage.getItem('prime') === 'false' ? 'overlay': 'none'
+                            }}/>  
+                        </button>
                     </Col>
                 </Row>
             </Container>
         </>
      
     );
+    
 }
 
 export default Account;

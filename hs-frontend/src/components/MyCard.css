@@ -1,0 +1,27 @@
+
+.card-body{
+    border:1px solid #8d552d;
+    z-index: -1 !important;
+}
+
+.btn-outline-primary {
+    --bs-btn-color: none !important;
+    --bs-btn-border-color: none !important;
+    --bs-btn-hover-color: none !important;
+    --bs-btn-hover-bg: none !important;
+    --bs-btn-hover-border-color: none !important;
+    --bs-btn-focus-shadow-rgb: 13,110,253;
+    --bs-btn-active-color: none !important;
+    --bs-btn-active-bg: none !important;
+    --bs-btn-active-border-color: none !important;
+    --bs-btn-active-shadow: none !important;
+    --bs-btn-disabled-color: none !important;
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: none !important;
+    --bs-gradient: none;
+    z-index: 1 !important;
+}
+
+.btn-outline-primary>svg{   
+     z-index: 2;
+}

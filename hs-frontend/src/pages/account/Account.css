@@ -36,9 +36,6 @@
     font-weight: 900;
 }
 
-#prime-img{
-    margin-left: 20px;
-}
 
 .change-field-container>button{
     margin-left: 20px;
@@ -91,7 +88,48 @@
         height: 160px;
     }
 
-    #prime-img{
-        margin-left: 0px;
+    #prime-sub-btn{
+        margin-left: 0px !important;
     }
+    
+
 }
+
+#prime-sub-btn{
+    margin-left: 22px;
+    background: none;
+    border-style: none;
+}
+
+
+#netflix-sub-btn{
+    background: none;
+    border-style: none;
+}
+
+
+/* .modal{
+    --bs-modal-header-border-color: #8d552de0 !important;
+    --bs-modal-footer-border-color: #8d552de0 !important;
+}
+
+.modal-content{
+    border-radius: 0px !important;
+    font-family: 'Rajdhani', sans-serif;
+    text-align: center;
+    background-color:#2b2f3577 !important;
+    border:1px solid #8d552de0 !important;
+}
+
+.btn-close{
+    background: transparent url('./images/x.png') center/1em auto no-repeat !important;
+}
+
+.modal-header{
+    color:white;
+  
+}
+
+.modal-title h4{
+    font-weight: 900;
+} */
