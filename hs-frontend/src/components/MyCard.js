@@ -6,7 +6,7 @@ import ProfileImage from './profile.png';
 import api from '../config/axiosConfig';
 import { useState } from'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashAlt, faCirclePlus} from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt, faCirclePlus, faCircleUser} from '@fortawesome/free-solid-svg-icons';
 import { useRef } from 'react';
 import { createRoot } from 'react-dom/client';
 
@@ -146,10 +146,11 @@ const MyCard = () => {
                 display: sessionStorage.getItem('profile0') == null ? 'none' : 'inline-block', 
                 margin: '0.5%',  
             }}>
-                <Card.Img variant="top" src={ProfileImage} style={{ width: '80%', height: 'auto'}}/>
+                <FontAwesomeIcon icon={faCircleUser} size="10x" style={{padding: "10%", color: "#e66100",}} />
+                {/* <Card.Img variant="top" src={ProfileImage} style={{ width: '80%', height: 'auto'}}/> */}
                 <Card.Body>
                     <Card.Title id='profile-0'>{sessionStorage.getItem('profile0')}</Card.Title>
-                    <Button variant="outline-primary" >Change ProfileName</Button>
+                    <Button variant="outline-primary" onClick={handleShowCreateProfile}>Change ProfileName</Button>
                     <Button variant="outline-secondary" onClick={() => removeProfile(0)}>
                         <FontAwesomeIcon icon={faTrashAlt} style={{color: "#ff7800"}} />
                     </Button>
@@ -161,11 +162,12 @@ const MyCard = () => {
                 backgroundColor:'#2b2f35', 
                 display: sessionStorage.getItem('profile1') == null ? 'none' : 'inline-block', 
                 margin: '0.5%', 
-                }}>
-            <Card.Img variant="top" src={ProfileImage} style={{ width: '100%'}}/>
+            }}>
+                <FontAwesomeIcon icon={faCircleUser} size="10x" style={{padding: "10%", color: "#e66100",}} />
+                {/* <Card.Img variant="top" src={ProfileImage} style={{ width: '100%'}}/> */}
                 <Card.Body>
                     <Card.Title id='profile-0'>{sessionStorage.getItem('profile1')}</Card.Title>
-                    <Button variant="outline-primary" >Change ProfileName</Button>
+                    <Button variant="outline-primary" onClick={handleShowCreateProfile}>Change ProfileName</Button>
                     <Button variant="outline-secondary" onClick={() => removeProfile(1)}>
                         <FontAwesomeIcon icon={faTrashAlt} style={{color: "#ff7800"}} />
                     </Button>
@@ -178,10 +180,11 @@ const MyCard = () => {
                 display: sessionStorage.getItem('profile2') == null ? 'none' : 'inline-block', 
                 margin: '0.5%', 
             }}>
-                <Card.Img variant="top" src={ProfileImage} style={{ width: '100%'}}/>
+                <FontAwesomeIcon icon={faCircleUser} size="10x" style={{padding: "10%", color: "#e66100",}} />
+                {/* <Card.Img variant="top" src={ProfileImage} style={{ width: '100%'}}/> */}
                 <Card.Body>
                     <Card.Title id='profile-0'>{sessionStorage.getItem('profile2')}</Card.Title>
-                    <Button variant="outline-primary" >Change ProfileName</Button>
+                    <Button variant="outline-primary" onClick={handleShowCreateProfile}>Change ProfileName</Button>
                     <Button variant="outline-secondary" onClick={() => removeProfile(2)}>
                         <FontAwesomeIcon icon={faTrashAlt} style={{color: "#ff7800"}} />
                     </Button>
@@ -194,10 +197,11 @@ const MyCard = () => {
                 display: sessionStorage.getItem('profile3') == null ? 'none' : 'inline-block', 
                 margin: '0.5%', 
             }}>
-                <Card.Img variant="top" src={ProfileImage} style={{ width: '100%'}}/>
+                <FontAwesomeIcon icon={faCircleUser} size="10x" style={{padding: "10%", color: "#e66100",}} />
+                {/* <Card.Img variant="top" src={ProfileImage} style={{ width: '100%'}}/> */}
                 <Card.Body>
                     <Card.Title id='profile-0'>{sessionStorage.getItem('profile3')}</Card.Title>
-                    <Button variant="outline-primary" >Change ProfileName</Button>
+                    <Button variant="outline-primary" onClick={handleShowCreateProfile}>Change ProfileName</Button>
                     <Button variant="outline-secondary" onClick={() => removeProfile(3)}>
                         <FontAwesomeIcon icon={faTrashAlt} style={{color: "#ff7800"}} />
                     </Button>

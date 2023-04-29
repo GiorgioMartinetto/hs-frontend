@@ -9,69 +9,83 @@ const Login = () => {
     const navigate = useNavigate();
     const [mex,setMex] = useState();
 
-
-    
-
     function sendLogin() {
 
         const email = document.getElementById('user-login').value;
         const pass = document.getElementById('pass-login').value;
         
-        if(email === '' || pass === ''){
+        if (email === '' || pass === '') {
             setMex('Please fill all fields');
         } else {
-            try{
-                api.post('user/login', { email:email, password:pass })
-                .then(response => {
-                    console.log(response.data)
-                    if(response.data){
-                        sessionStorage.setItem('userName', response.data.userName);
-                        sessionStorage.setItem('email', response.data.email);
-                        navigate('/home');
+            try {
+                api.post(
+                    'user/login', 
+                    { 
+                        email:email, 
+                        password:pass 
+                    }
+                ).then(
+                    response => {
+                        console.log(response.data)
+                        if (response.data) {
+                            sessionStorage.setItem('userName', response.data.userName);
+                            sessionStorage.setItem('email', response.data.email);
+                            navigate('/home');
 
-                    } else {
-                        console.log('Something went wrong')
+                        } else {
+                            console.log('Something went wrong');
+                        }
                     }
-                    
-                })
-                .then(  res => {
-                    try{
-                        api.post('profile/list', {owner: sessionStorage.getItem('email')})
-                        .then(response => {
-                        
-                            if(response.data){ 
-                                let i = 0;
-                                while(response.data[i]!== undefined){
-                                    sessionStorage.setItem('profile'+i, response.data[i]);
-                                    i++;
+                ).then(  
+                    res => {
+                        try {
+                            api.post(
+                                'profile/list', 
+                                {
+                                    owner: sessionStorage.getItem('email')
                                 }
-                            } else {
-                                console.log('Something went wrong');
-                            }
-                            
-                        });
-                    } catch(err){
-                        console.log(err);
+                            ).then(
+                                response => {    
+                                    if (response.data) { 
+                                        let i = 0;
+                                        while(response.data[i]!== undefined) {
+                                            sessionStorage.setItem('profile' + i, response.data[i]);
+                                            i++;
+                                        }
+                                    } else {
+                                        console.log('Something went wrong');
+                                    }
+                                }
+                            );
+                        } catch(err) {
+                            console.log(err);
+                        }
                     }
-                })
-                .then(  res => {
-                    try{
-                        api.post('subscription/listSubscriptions', {owner: sessionStorage.getItem('email')})
-                        .then(response => {
-                            console.log(response.data)
-                            if(response.data){
-                                sessionStorage.setItem('netflix', response.data.netflix);
-                                sessionStorage.setItem('prime', response.data.prime);
-                            } else {
-                                console.log('Something went wrong');
-                            }
-                            
-                        });
-                    } catch(err){
-                        console.log(err);
+                ).then(  
+                    res => {
+                        try {
+                            api.post(
+                                'subscription/listSubscriptions', 
+                                {
+                                    owner: sessionStorage.getItem('email')
+                                }
+                            ).then(
+                                response => {
+                                    console.log(response.data);
+                                    if (response.data) {
+                                        sessionStorage.setItem('netflix', response.data.netflix ? 'true' : 'false');
+                                        sessionStorage.setItem('prime', response.data.prime ? 'true' : 'false');
+                                    } else {
+                                        console.log('Something went wrong');
+                                    }
+                                }
+                            );
+                        } catch(err) {
+                            console.log(err);
+                        }
                     }
-                });
-            }catch(err){
+                );
+            } catch(err) {
                 console.log(err);
             }
         }
