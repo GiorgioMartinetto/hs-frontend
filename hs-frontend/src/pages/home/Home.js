@@ -3,8 +3,8 @@ import './Home.css'
 //import session from '../../config/UserSession'
 //import { useNavigate } from 'react-router-dom';
 import MyNavbar from '../../components/Navbar';
-
-
+import NetflixContent from '../../components/NetflixContent';
+import PrimeContent from '../../components/PrimeContent';
 
 const Home = () => {
     return(
@@ -19,7 +19,14 @@ const Home = () => {
                 <MyNavbar /> 
                 <div id='content-container'>
                     {/* TODO: implement content fetch from server and loading */}
-
+                    <h1 className='text-highstreaming'>
+                        Netflix
+                    </h1>
+                    <NetflixContent/>
+                    <h1 className='text-highstreaming'>
+                        Amazon Prime
+                    </h1>
+                    <PrimeContent/>
                 </div>
             </div>
         </>
