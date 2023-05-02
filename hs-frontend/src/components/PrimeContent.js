@@ -5,10 +5,11 @@ import 'react-multi-carousel/lib/styles.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import api from '../config/axiosPrimeConfig';
+import { useNavigate } from 'react-router-dom';
 
 
 const PrimeContent = () => {
-
+    const navigate = useNavigate();
     const [primeSerieData, setPrimeSerieData] = useState([]);
     const [primeFilmData, setPrimeFilmData] = useState([]);
     const responsive = {
@@ -109,7 +110,7 @@ const PrimeContent = () => {
                         image => (
                             <div className='prime-card-container' key={image.id}>
                                 
-                                <button className='prime-card-button'>
+                                <button className='prime-card-button' onClick={() => navigate('/seriescontent', {state: {image}})}>
                                     <img 
                                         src={image.seriesImage} 
                                         alt={image.seriesTitle} 

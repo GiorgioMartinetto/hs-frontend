@@ -7,7 +7,8 @@ import Home from './pages/home/Home';
 import Account from './pages/account/Account';
 import Series from './pages/series/Series';
 import React, { Component } from 'react';
-
+import SeriesContent from './pages/seriescontent/MediaSeriesContent';
+import FilmContent from './pages/filmcontent/MediaFilmContent';
 
 function App () {
     return (
@@ -20,6 +21,8 @@ function App () {
           <Route path='/login' element={<Login />} />
           <Route path='/reset' element={<Reset />} />
           <Route path='/series' element={<Series />} />
+          <Route path='/seriescontent' element={<SeriesContent />} />
+          <Route path='/filmcontent' element={<FilmContent />} />
         </Routes>
       </>
     );
