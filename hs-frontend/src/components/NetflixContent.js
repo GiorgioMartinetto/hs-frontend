@@ -1,24 +1,23 @@
-import { useNavigate } from 'react-router-dom';
 import './NetflixContent.css';
 import { useEffect, useState } from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import ProfileImage from './profile.png';
 import api from '../config/axiosNetflixConfig';
 
 const NetflixContent = () => {
-    const navigate=useNavigate();
-    const [netflixData, setNetflixData] = useState([]);
+
+    const [netflixSerieData, setNetflixSerieData] = useState([]);
+    const [netflixFilmData, setNetflixFilmData] = useState([]);
     const responsive = {
         desktop: {
           breakpoint: { max: 3000, min: 1024 },
-          items: 3,
+          items: 5,
         },
         tablet: {
           breakpoint: { max: 1024, min: 464 },
-          items: 2,
+          items: 3,
         },
         mobile: {
           breakpoint: { max: 464, min: 0 },
@@ -51,19 +50,24 @@ const NetflixContent = () => {
     useEffect(
         () => {
             console.log('get netflix content');
-            console.log(netflixData);
+            console.log(netflixSerieData);
             try {
-                // setNetflixData([
-                //     { id: 1, src: ProfileImage, alt: 'Image 1' },
-                //     { id: 2, src: ProfileImage, alt: 'Image 2' },
-                //     { id: 3, src: ProfileImage, alt: 'Image 3' }
-                // ]);
-                api.get(
-                    "all",
-                ).then(
+                api.get("series")
+                .then(
                     response => {
                         if (response.data != null) {
-                            setNetflixData(response.data);
+                            setNetflixSerieData(response.data);
+                        } else {
+                            console.log('Error loading data from server');
+                        }
+                    }
+                );
+
+                api.get("films")
+                .then(
+                    response => {
+                        if (response.data != null) {
+                            setNetflixFilmData(response.data);
                         } else {
                             console.log('Error loading data from server');
                         }
@@ -100,17 +104,34 @@ const NetflixContent = () => {
                 swipeable={true}
             >
                 {
-                    netflixData.map(
+                    netflixSerieData.map(
                         image => (
-                            <div key={image.id}>
-                                <img 
-                                    src={image.src} 
-                                    alt={image.alt} 
-                                    style={{
-                                        width: '100%',
+                            <div className='netflix-card-container' key={image.id}>
+                                
+                                <button className='netflix-card-button'>
+                                    <img 
+                                        src={image.seriesImage} 
+                                        alt={image.seriesTitle} 
+                                    />
+                                </button>
+   
+                            </div>
+                        )
+                    )
+                }
 
-                                    }}
-                                />
+                {
+                    netflixFilmData.map(
+                        image => (
+                            <div className='netflix-card-container' key={image.id}>
+                                
+                                <button className='netflix-card-button'>
+                                    <img 
+                                        src={image.poster} 
+                                        alt={image.title} 
+                                    />
+                                </button>
+   
                             </div>
                         )
                     )

@@ -17,3 +17,19 @@
 .custom-arrow.custom-arrow-right {
     right: 1%;
 }
+
+
+
+.netflix-card-container{
+    text-align: center;
+    width: 100%;
+}
+.netflix-card-button{
+   border-style: none;
+   background: none;
+   width: 80%;
+}
+
+.netflix-card-button>img{
+    width: 100%;
+}

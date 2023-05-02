@@ -1,5 +1,20 @@
-.text-highstreaming {
-    color: darkorange;
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300&display=swap');
+
+
+.text-highstreaming-netflix {
+    background-image: linear-gradient(to right, #b50b17, transparent) ;
+    font-family: 'Rajdhani', sans-serif;
+    color: white;
+    padding-left: 1%;
+    margin: 3%;
+    margin-top: 10%
+}
+
+.text-highstreaming-prime {
+    background-image: linear-gradient(to right, #00aae1, transparent) ;
+    font-family: 'Rajdhani', sans-serif;
+    color: white;
+    padding-left: 1%;
     margin: 3%;
     margin-top: 10%
 }

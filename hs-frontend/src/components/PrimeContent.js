@@ -1,30 +1,28 @@
-import { useNavigate } from 'react-router-dom';
 import './PrimeContent.css';
 import { useEffect, useState } from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import ProfileImage from './profile.png';
 import api from '../config/axiosPrimeConfig';
 
 
 const PrimeContent = () => {
-    const navigate=useNavigate();
-    const [primeData, setPrimeData] = useState([]);
-    
+
+    const [primeSerieData, setPrimeSerieData] = useState([]);
+    const [primeFilmData, setPrimeFilmData] = useState([]);
     const responsive = {
         desktop: {
           breakpoint: { max: 3000, min: 1024 },
-          items: 3,
+          items: 5
         },
         tablet: {
           breakpoint: { max: 1024, min: 464 },
-          items: 2,
+          items: 3
         },
         mobile: {
           breakpoint: { max: 464, min: 0 },
-          items: 1,
+          items: 1
         },
     };
 
@@ -53,22 +51,24 @@ const PrimeContent = () => {
     useEffect(
         () => {
             console.log('get prime content');
-            console.log(primeData);
+            console.log(primeSerieData);
             try {
-                // setPrimeData([
-                //     { id: 1, src: ProfileImage, alt: 'Image 1' },
-                //     { id: 2, src: ProfileImage, alt: 'Image 2' },
-                //     { id: 3, src: ProfileImage, alt: 'Image 3' },
-                //     { id: 1, src: ProfileImage, alt: 'Image 5' },
-                //     { id: 2, src: ProfileImage, alt: 'Image 6' },
-                //     { id: 3, src: ProfileImage, alt: 'Image 7' }
-                // ]);
-                api.get(
-                    "all",
-                ).then(
+                api.get("series")
+                .then(
                     response => {
                         if (response.data != null) {
-                            setPrimeData(response.data);
+                            setPrimeSerieData(response.data);
+                        } else {
+                            console.log('Error loading data from server');
+                        }
+                    }
+                );
+
+                api.get("films")
+                .then(
+                    response => {
+                        if (response.data != null) {
+                            setPrimeFilmData(response.data);
                         } else {
                             console.log('Error loading data from server');
                         }
@@ -105,21 +105,40 @@ const PrimeContent = () => {
                 swipeable={true}
             >
                 {
-                    primeData.map(
+                    primeSerieData.map(
                         image => (
-                            <div key={image.id}>
-                                <img 
-                                    src={image.src} 
-                                    alt={image.alt} 
-                                    style={{
-                                        width: '100%',
-
-                                    }}
-                                />
+                            <div className='prime-card-container' key={image.id}>
+                                
+                                <button className='prime-card-button'>
+                                    <img 
+                                        src={image.seriesImage} 
+                                        alt={image.seriesTitle} 
+                                    />
+                                </button>
+   
                             </div>
                         )
                     )
                 }
+                
+                {
+                    primeFilmData.map(
+                        image => (
+                            <div className='prime-card-container' key={image.id}>
+                                
+                                <button className='prime-card-button'>
+                                    <img 
+                                        src={image.poster} 
+                                        alt={image.title} 
+                                    />
+                                </button>
+   
+                            </div>
+                        )
+                    )
+                }
+
+              
             </Carousel>
         </>
     );

@@ -1,0 +1,14 @@
+
+.prime-card-container{
+    text-align: center;
+    width: 100%;
+}
+.prime-card-button{
+   border-style: none;
+   background: none;
+   width: 80%;
+}
+
+.prime-card-button>img{
+    width: 100%;
+}
