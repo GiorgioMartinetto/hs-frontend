@@ -32,7 +32,7 @@ const MyNavbar = () => {
                 <Nav className="me-auto">
                   <Nav.Link onClick={() => navigate('/home')}>Home</Nav.Link>
                   <Nav.Link onClick={() => navigate('/series')}>Series</Nav.Link>
-                  <Nav.Link href="#link">Films</Nav.Link>
+                  <Nav.Link onClick={() => navigate('/films')}>Films</Nav.Link>
                   <NavDropdown title={sessionStorage.getItem('userName')} id="basic-nav-dropdown">
                     <NavDropdown.Item onClick={() => navigate('/account')}>Account Settings</NavDropdown.Item>   
                     <NavDropdown.Divider />

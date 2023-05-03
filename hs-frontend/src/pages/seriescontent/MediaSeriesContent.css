@@ -64,3 +64,10 @@
     font-size: 0.7em;
     font-weight: 600;
 }
+
+.player-btn {
+    background: none;
+    border: none;
+    padding: 15%;
+    padding-left: 30%;
+}

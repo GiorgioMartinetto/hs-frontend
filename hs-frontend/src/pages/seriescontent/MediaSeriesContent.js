@@ -1,14 +1,17 @@
 import './MediaSeriesContent.css';
 
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Navigate } from 'react-router-dom';
 import Container from 'react-bootstrap/esm/Container';
 import Accordion from 'react-bootstrap/esm/Accordion';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCirclePlay } from '@fortawesome/free-solid-svg-icons';
 
 import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
 import MyNavbar from '../../components/Navbar';
 const MediaSeriesContent = () => {
  
+    const navigate = useNavigate();
     const location = useLocation();
     
     return(
@@ -53,11 +56,18 @@ const MediaSeriesContent = () => {
                                                                 episode => (
                                                                     <>
                                                                         <Row>
-                                                                            <Col className='video-player-container'>
-                                                                            </Col>
                                                                             <Col className='episode-generality'>
                                                                                 <h3>Episode {episode.episodeNumber}: {episode.title}</h3>
                                                                                 <p>{episode.episodePlot}</p>
+                                                                            </Col>
+                                                                            <Col className='video-player-container'>
+                                                                                <button className='player-btn' onClick={() => navigate('/episodes', {state: {episode}})}>
+                                                                                    <FontAwesomeIcon 
+                                                                                        icon={faCirclePlay} 
+                                                                                        size='5x'
+                                                                                        style={{color: "#c64600",}} 
+                                                                                    /> 
+                                                                                </button>
                                                                             </Col>
                                                                         </Row>
                                                                     </>

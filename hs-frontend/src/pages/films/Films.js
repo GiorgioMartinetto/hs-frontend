@@ -1,9 +1,9 @@
 import MyNavbar from '../../components/Navbar';
 import NetflixContent from '../../components/NetflixContent';
 import PrimeContent from '../../components/PrimeContent';
-import './Series.css';
+import './Films.css';
 
-const Series = () => {
+const Films = () => {
     return (
         <>
             <div className="home">
@@ -24,4 +24,4 @@ const Series = () => {
     );
 }
 
-export default Series;
+export default Films;
