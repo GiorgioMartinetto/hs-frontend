@@ -5,9 +5,10 @@ import 'react-multi-carousel/lib/styles.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import api from '../config/axiosNetflixConfig';
+import { useNavigate } from 'react-router-dom';
 
 const NetflixContent = () => {
-
+    const navigate = useNavigate();
     const [netflixSerieData, setNetflixSerieData] = useState([]);
     const [netflixFilmData, setNetflixFilmData] = useState([]);
     const responsive = {
@@ -108,7 +109,7 @@ const NetflixContent = () => {
                         image => (
                             <div className='netflix-card-container' key={image.id}>
                                 
-                                <button className='netflix-card-button'>
+                                <button className='netflix-card-button' onClick={() => navigate('/seriescontent', {state: {image}})}>
                                     <img 
                                         src={image.seriesImage} 
                                         alt={image.seriesTitle} 

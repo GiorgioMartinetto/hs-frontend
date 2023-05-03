@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300&display=swap');
+.media-series-container{
+    color:white;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+.series-element-container{
+    max-width: 90% !important;
+}
+
+
+.series-row1{
+    margin-top: 0px !important;
+    padding-top: 4% !important;
+}
+
+.series-image-container{
+    text-align: center;
+}
+
+.series-image{
+    width: 55%;
+    height: auto;
+    border: 2px solid #8b552c;
+    border-radius: 9px;
+}
+
+#series-title{
+    font-weight: bolder;
+    font-size: 4em;
+
+    background: -webkit-linear-gradient(#ffb780, #8b552c);
+    -webkit-background-clip: text;
+            background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#series-macro-plot{
+    margin-top: 22px;
+    font-style: italic;
+    font-size: 1.3em;
+}
+
+.series-generality{
+    margin-top: 50px;
+}
+
+.series-generality>h6{
+    font-weight: 600;
+}
+
+
+
+.video-player-container{
+    width: 20% !important; 
+}
+
+.episode-generality{
+    width: 80% !important;
+}
+
+.episode-generality>p{
+    font-style: italic;
+    font-size: 0.7em;
+    font-weight: 600;
+}
