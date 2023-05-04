@@ -49,14 +49,17 @@
     font-weight: 600;
 }
 
+.series-generality>p{
+    font-weight: 600;
+    font-size: 2em;
+    width: 70px;
+    text-align: center;
+    border: 1px solid white;
+}
 
 
 .video-player-container{
-    width: 20% !important; 
-}
-
-.episode-generality{
-    width: 80% !important;
+    text-align: center;
 }
 
 .episode-generality>p{
@@ -66,8 +69,16 @@
 }
 
 .player-btn {
+    color: white;
+    text-align: center;
     background: none;
-    border: none;
-    padding: 15%;
-    padding-left: 30%;
+    border: 1px solid #8b552c;
+    width:50% ;
+    margin-top: 25%;
+    font-size: 1.3em;
+}
+
+.player-btn:hover{
+    background-color: #8b552c;
+    font-weight: bolder;
 }

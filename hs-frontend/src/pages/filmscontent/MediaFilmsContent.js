@@ -24,7 +24,7 @@ const MediaFilmsContent = () => {
                         backgroundImage: 'linear-gradient(to bottom, #2b2f35b2, #0000009c), url('+location.state.image.wallpaper+')'
                       }}
                 >
-                    <Container className='films-element-container'>
+                    <Container className='films-element-container' fluid>
                         <Row className='films-row1'>
                             <Col className='films-image-container'>
                                 <img className='films-image' src={location.state.image.poster} alt={location.state.image.seriesTitle} />
@@ -37,6 +37,10 @@ const MediaFilmsContent = () => {
                                     <h6 id='films-cast'>Cast: {location.state.image.cast}</h6>    
                                     <h6 id='films-creator'>Creators: {location.state.image.creators}</h6>
                                     <h6 id='films-genres'>Genres: {location.state.image.tvGenre}</h6> 
+                                    <p> {location.state.image.yearPlus} </p>
+                                </div>
+                                <div>
+                                    <button className='film-player-btn'> Watch Now! </button>
                                 </div>
                             </Col>
                         </Row>

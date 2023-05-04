@@ -49,14 +49,28 @@
     font-weight: 600;
 }
 
-
-.films-generality{
-    width: 80% !important;
-}
-
 .films-generality>p{
-    font-style: italic;
-    font-size: 0.7em;
     font-weight: 600;
+    font-size: 2em;
+    width: 70px;
+    text-align: center;
+    border: 1px solid white;
 }
+
+.film-player-btn {
+    color: white;
+    text-align: center;
+    background: none;
+    border: 1px solid #8b552c;
+    width:30%;
+    font-size: 1.7em;
+
+}
+
+.film-player-btn:hover{
+    background-color: #8b552c;
+    font-weight: bolder;
+}
+
+
 

@@ -24,7 +24,7 @@ const MediaSeriesContent = () => {
                             backgroundImage: 'linear-gradient(to bottom, #2b2f35b2, #0000009c), url('+location.state.image.wallpaper+')'
                           }}
                     >
-                    <Container className='series-element-container'>
+                    <Container className='series-element-container' fluid>
                         <Row className='series-row1'>
                             <Col className='series-image-container'>
                                 <img className='series-image' src={location.state.image.seriesImage} alt={location.state.image.seriesTitle} />
@@ -37,6 +37,7 @@ const MediaSeriesContent = () => {
                                     <h6 id='series-cast'>Cast: {location.state.image.cast}</h6>    
                                     <h6 id='series-creator'>Creators: {location.state.image.creators}</h6>
                                     <h6 id='series-genres'>Genres: {location.state.image.tvGenre}</h6> 
+                                    <p>{location.state.image.yearPlus}</p>
                                 </div>
                             </Col>
                         </Row>                
@@ -54,17 +55,13 @@ const MediaSeriesContent = () => {
                                                                 episode => (
                                                                     <>
                                                                         <Row>
-                                                                            <Col className='episode-generality'>
+                                                                            <Col className='episode-generality' xs={9}>
                                                                                 <h3>Episode {episode.episodeNumber}: {episode.title}</h3>
                                                                                 <p>{episode.episodePlot}</p>
                                                                             </Col>
                                                                             <Col className='video-player-container'>
                                                                                 <button className='player-btn' onClick={() => navigate('/episodes', {state: {episode}})}>
-                                                                                    <FontAwesomeIcon 
-                                                                                        icon={faCirclePlay} 
-                                                                                        size='5x'
-                                                                                        style={{color: "#c64600",}} 
-                                                                                    /> 
+                                                                                    Watch Now
                                                                                 </button>
                                                                             </Col>
                                                                         </Row>
