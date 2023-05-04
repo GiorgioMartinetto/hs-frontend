@@ -1,15 +1,14 @@
-import './NetflixContent.css';
+import '../home/NetflixContent.css';
 import { useEffect, useState } from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import api from '../config/axiosNetflixConfig';
+import api from '../../config/axiosNetflixConfig';
 import { useNavigate } from 'react-router-dom';
 
 const NetflixContent = () => {
     const navigate = useNavigate();
-    const [netflixSerieData, setNetflixSerieData] = useState([]);
     const [netflixFilmData, setNetflixFilmData] = useState([]);
     const responsive = {
         desktop: {
@@ -51,19 +50,7 @@ const NetflixContent = () => {
     useEffect(
         () => {
             console.log('get netflix content');
-            console.log(netflixSerieData);
             try {
-                api.get("series")
-                .then(
-                    response => {
-                        if (response.data != null) {
-                            setNetflixSerieData(response.data);
-                        } else {
-                            console.log('Error loading data from server');
-                        }
-                    }
-                );
-
                 api.get("films")
                 .then(
                     response => {
@@ -104,29 +91,13 @@ const NetflixContent = () => {
                 slidesToSlide={1}
                 swipeable={true}
             >
-                {
-                    netflixSerieData.map(
-                        image => (
-                            <div className='netflix-card-container' key={image.id}>
-                                
-                                <button className='netflix-card-button' onClick={() => navigate('/seriescontent', {state: {image}})}>
-                                    <img 
-                                        src={image.seriesImage} 
-                                        alt={image.seriesTitle} 
-                                    />
-                                </button>
-   
-                            </div>
-                        )
-                    )
-                }
 
                 {
                     netflixFilmData.map(
                         image => (
                             <div className='netflix-card-container' key={image.id}>
                                 
-                                <button className='netflix-card-button'>
+                                <button className='netflix-card-button' onClick={() => navigate('/filmscontent', {state: {image}})}>
                                     <img 
                                         src={image.poster} 
                                         alt={image.title} 

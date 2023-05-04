@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import ProfileImage from './profile.png';
-import api from '../config/axiosConfig';
+import api from '../../config/axiosConfig';
 import { useState } from'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt, faCirclePlus, faCircleUser} from '@fortawesome/free-solid-svg-icons';

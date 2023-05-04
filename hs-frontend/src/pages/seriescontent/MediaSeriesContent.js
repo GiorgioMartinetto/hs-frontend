@@ -1,14 +1,12 @@
 import './MediaSeriesContent.css';
-
-import { useNavigate, useLocation, Navigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Container from 'react-bootstrap/esm/Container';
 import Accordion from 'react-bootstrap/esm/Accordion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCirclePlay } from '@fortawesome/free-solid-svg-icons';
-
 import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
-import MyNavbar from '../../components/Navbar';
+import MyNavbar from '../../components/navbar/Navbar';
 const MediaSeriesContent = () => {
  
     const navigate = useNavigate();
@@ -24,8 +22,8 @@ const MediaSeriesContent = () => {
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',
                             backgroundImage: 'linear-gradient(to bottom, #2b2f35b2, #0000009c), url('+location.state.image.wallpaper+')'
-                          }
-                        }>
+                          }}
+                    >
                     <Container className='series-element-container'>
                         <Row className='series-row1'>
                             <Col className='series-image-container'>

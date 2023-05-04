@@ -2,9 +2,9 @@ import React from 'react';
 import './Home.css'
 //import session from '../../config/UserSession'
 //import { useNavigate } from 'react-router-dom';
-import MyNavbar from '../../components/Navbar';
-import NetflixContent from '../../components/NetflixContent';
-import PrimeContent from '../../components/PrimeContent';
+import MyNavbar from '../../components/navbar/Navbar';
+import NetflixContent from '../../components/home/NetflixContent';
+import PrimeContent from '../../components/home/PrimeContent';
 
 const Home = () => {
     return(

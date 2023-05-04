@@ -1,32 +1,31 @@
-import './PrimeContent.css';
+import './NetflixContent.css';
 import { useEffect, useState } from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import api from '../config/axiosPrimeConfig';
+import api from '../../config/axiosNetflixConfig';
 import { useNavigate } from 'react-router-dom';
 
-
-const PrimeContent = () => {
+const NetflixContent = () => {
     const navigate = useNavigate();
-    const [primeSerieData, setPrimeSerieData] = useState([]);
-    const [primeFilmData, setPrimeFilmData] = useState([]);
+    const [netflixSerieData, setNetflixSerieData] = useState([]);
+    const [netflixFilmData, setNetflixFilmData] = useState([]);
     const responsive = {
         desktop: {
           breakpoint: { max: 3000, min: 1024 },
-          items: 5
+          items: 5,
         },
         tablet: {
           breakpoint: { max: 1024, min: 464 },
-          items: 3
+          items: 3,
         },
         mobile: {
           breakpoint: { max: 464, min: 0 },
-          items: 1
+          items: 1,
         },
-    };
-
+      };
+    
     const CustomLeftArrow = ({ onClick }) => {
         return (
             <button
@@ -51,14 +50,14 @@ const PrimeContent = () => {
 
     useEffect(
         () => {
-            console.log('get prime content');
-            console.log(primeSerieData);
+            console.log('get netflix content');
+            console.log(netflixSerieData);
             try {
                 api.get("series")
                 .then(
                     response => {
                         if (response.data != null) {
-                            setPrimeSerieData(response.data);
+                            setNetflixSerieData(response.data);
                         } else {
                             console.log('Error loading data from server');
                         }
@@ -69,7 +68,7 @@ const PrimeContent = () => {
                 .then(
                     response => {
                         if (response.data != null) {
-                            setPrimeFilmData(response.data);
+                            setNetflixFilmData(response.data);
                         } else {
                             console.log('Error loading data from server');
                         }
@@ -106,11 +105,11 @@ const PrimeContent = () => {
                 swipeable={true}
             >
                 {
-                    primeSerieData.map(
+                    netflixSerieData.map(
                         image => (
-                            <div className='prime-card-container' key={image.id}>
+                            <div className='netflix-card-container' key={image.id}>
                                 
-                                <button className='prime-card-button' onClick={() => navigate('/seriescontent', {state: {image}})}>
+                                <button className='netflix-card-button' onClick={() => navigate('/seriescontent', {state: {image}})}>
                                     <img 
                                         src={image.seriesImage} 
                                         alt={image.seriesTitle} 
@@ -121,13 +120,13 @@ const PrimeContent = () => {
                         )
                     )
                 }
-                
+
                 {
-                    primeFilmData.map(
+                    netflixFilmData.map(
                         image => (
-                            <div className='prime-card-container' key={image.id}>
+                            <div className='netflix-card-container' key={image.id}>
                                 
-                                <button className='prime-card-button'>
+                                <button className='netflix-card-button' onClick={() => navigate('/filmscontent', {state: {image}})}>
                                     <img 
                                         src={image.poster} 
                                         alt={image.title} 
@@ -138,11 +137,9 @@ const PrimeContent = () => {
                         )
                     )
                 }
-
-              
             </Carousel>
         </>
     );
 } 
 
-export default PrimeContent;
+export default NetflixContent;

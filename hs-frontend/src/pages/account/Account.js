@@ -13,8 +13,8 @@ import Modal from 'react-bootstrap/Modal';
 
 
 /* custom components */
-import MyNavbar from '../../components/Navbar';
-import MyCard from '../../components/MyCard';
+import MyNavbar from '../../components/navbar/Navbar';
+import MyCard from '../../components/mycard/MyCard';
 
 const Account = () => {
     const [errMex, setErrMex] = useState();

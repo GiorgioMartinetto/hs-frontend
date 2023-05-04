@@ -1,19 +1,15 @@
 import './Episodes.css';
-import { useEffect, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import api from '../../config/axiosPrimeConfig';
-import { useNavigate, useLocation } from 'react-router-dom';
-import Container from 'react-bootstrap/esm/Container';
-import MyNavbar from '../../components/Navbar';
+import { useEffect } from 'react';
+import {useLocation } from 'react-router-dom';
+import MyNavbar from '../../components/navbar/Navbar';
 import ReactPlayer from "react-player";
+
 const Episodes = () => {
-    const navigate = useNavigate();
+
     const location = useLocation();
     useEffect(
         () => {
             console.log('get episode content');
-            
         }, 
         []
     );

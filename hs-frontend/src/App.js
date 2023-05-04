@@ -8,7 +8,7 @@ import Account from './pages/account/Account';
 import Series from './pages/series/Series';
 import React from 'react';
 import SeriesContent from './pages/seriescontent/MediaSeriesContent';
-import FilmContent from './pages/filmcontent/MediaFilmContent';
+import FilmContent from './pages/filmscontent/MediaFilmsContent';
 import Episodes from './pages/episodes/Episodes';
 import Films from './pages/films/Films';
 
@@ -24,7 +24,7 @@ function App () {
           <Route path='/reset' element={<Reset />} />
           <Route path='/series' element={<Series />} />
           <Route path='/seriescontent' element={<SeriesContent />} />
-          <Route path='/filmcontent' element={<FilmContent />} />
+          <Route path='/filmscontent' element={<FilmContent />} />
           <Route path='/episodes' element={<Episodes />} />
           <Route path='/films' element={<Films />} />
         </Routes>
