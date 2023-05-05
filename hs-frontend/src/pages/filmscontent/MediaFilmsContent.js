@@ -1,9 +1,6 @@
 import './MediaFilmsContent.css';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Container from 'react-bootstrap/esm/Container';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCirclePlay } from '@fortawesome/free-solid-svg-icons';
-
 import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
 import MyNavbar from '../../components/navbar/Navbar';
@@ -11,6 +8,7 @@ import MyNavbar from '../../components/navbar/Navbar';
 const MediaFilmsContent = () => {
     const navigate = useNavigate();
     const location = useLocation();
+
 
     return(
         <>
@@ -40,7 +38,27 @@ const MediaFilmsContent = () => {
                                     <p> {location.state.image.yearPlus} </p>
                                 </div>
                                 <div>
-                                    <button className='film-player-btn'> Watch Now! </button>
+                                    <button className='film-player-btn'
+                                         style={
+                                            {
+                                                display: sessionStorage.getItem(location.state.image.provider) === 'true' ? 'none':'inline'
+                                            }
+                                        }
+                                        onClick={() => navigate('/account')}
+                                    >
+                                        Add Subscription
+                                    </button>
+
+                                    <button className='film-player-btn'
+                                        style={
+                                            {
+                                                display: sessionStorage.getItem(location.state.image.provider) === 'false' ? 'none':'inline'
+                                            }
+                                        }
+                                        onClick={() => navigate('/episodes', {state:{url:location.state.image.url}})}
+                                        disabled={location.state.image.url === null ? true:false}>
+                                        {location.state.image.url === null ? 'Coming Soon':'Watch Now'}
+                                    </button>
                                 </div>
                             </Col>
                         </Row>

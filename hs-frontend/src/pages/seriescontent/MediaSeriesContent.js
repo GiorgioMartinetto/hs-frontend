@@ -2,8 +2,6 @@ import './MediaSeriesContent.css';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Container from 'react-bootstrap/esm/Container';
 import Accordion from 'react-bootstrap/esm/Accordion';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCirclePlay } from '@fortawesome/free-solid-svg-icons';
 import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
 import MyNavbar from '../../components/navbar/Navbar';
@@ -60,8 +58,27 @@ const MediaSeriesContent = () => {
                                                                                 <p>{episode.episodePlot}</p>
                                                                             </Col>
                                                                             <Col className='video-player-container'>
-                                                                                <button className='player-btn' onClick={() => navigate('/episodes', {state: {episode}})}>
-                                                                                    Watch Now
+                                                                            <button className='player-btn'
+                                                                                style={
+                                                                                    {
+                                                                                        display: sessionStorage.getItem(location.state.image.provider) === 'true' ? 'none':'inline',
+                                                                                    }
+                                                                                }
+                                                                                onClick={() => navigate('/account')}
+                                                                            >
+                                                                                Add Subscription
+                                                                            </button>
+                                                                                
+                                                                                
+                                                                                <button className='player-btn'
+                                                                                    style={
+                                                                                        {
+                                                                                            display: sessionStorage.getItem(location.state.image.provider) === 'false' ? 'none':'inline'
+                                                                                        }
+                                                                                    } 
+                                                                                    disabled={episode.url === null ? true : false}
+                                                                                    onClick={() => navigate('/episodes', {state:{url:episode.url}})}>
+                                                                                    {episode.url === null ? 'Coming Soon' : 'Watch Now'}
                                                                                 </button>
                                                                             </Col>
                                                                         </Row>
